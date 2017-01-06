@@ -1,0 +1,43 @@
+{
+  "name": "three-orbitcontrols",
+  "version": "0.1.0",
+  "description": "ThreeJS OrbitControls as a standalone and typescript compatible npm module",
+  "main": "dist",
+  "scripts": {
+    "test": "mocha --opts mocha.opts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolaspanel/three-orbitcontrols.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "keywords": [
+    "orbit",
+    "controls",
+    "threejs",
+    "three",
+    "js",
+    "orbiter",
+    "camera",
+    "controller"
+  ],
+  "bugs": {
+    "url": "https://github.com/nicolaspanel/three-orbitcontrols/issues"
+  },
+  "homepage": "https://github.com/nicolaspanel/three-orbitcontrols#readme",
+  "dependencies": {
+    "three": "^0.83.0"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^2.0.29",
+    "@types/mocha": "^2.2.35",
+    "@types/three": "^0.81.0",
+    "chai": "^3.5.0",
+    "jsdom": "^9.9.1",
+    "mocha": "^3.2.0",
+    "ts-node": "^2.0.0",
+    "typescript": "^2.1.4"
+  },
+  "typings": "dist/index.d.ts"
+}
