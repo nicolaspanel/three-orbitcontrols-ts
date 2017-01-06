@@ -4,7 +4,7 @@
   "description": "ThreeJS OrbitControls as a standalone and typescript compatible npm module",
   "main": "dist",
   "scripts": {
-    "preversion": "npm test && ./node_modules/typescript/bin/tsc -p tsconfig.json",
+    "preversion": "npm test && ./node_modules/typescript/bin/tsc -p tsconfig.json && git ci dist -m 'update'",
     "test": "mocha --opts mocha.opts"
   },
   "repository": {
@@ -31,6 +31,7 @@
     "three": "^0.83.0"
   },
   "devDependencies": {
+    "@types/core-js": "^0.9.35",
     "@types/jsdom": "^2.0.29",
     "@types/mocha": "^2.2.35",
     "@types/three": "^0.81.0",
