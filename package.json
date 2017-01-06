@@ -1,6 +1,6 @@
 {
   "name": "three-orbitcontrols",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "ThreeJS OrbitControls as a standalone and typescript compatible npm module",
   "main": "dist",
   "scripts": {
