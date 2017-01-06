@@ -1,5 +1,4 @@
 /// <reference types="three" />
-/// <reference types="webvr-api" />
 import * as THREE from 'three';
 export declare class OrbitControls extends THREE.EventDispatcher {
     object: THREE.Camera;

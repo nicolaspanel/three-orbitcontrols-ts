@@ -499,17 +499,11 @@ export class OrbitControls extends THREE.EventDispatcher {
         case 3: {
           if ( this.enablePan === false ) return;
           if ( this.state !== STATE.TOUCH_PAN ) return; // is this needed?...
-
           this.panEnd.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-
           this.panDelta.subVectors( this.panEnd, this.panStart );
-
           this.pan( this.panDelta.x, this.panDelta.y );
-
           this.panStart.copy( this.panEnd );
-
           this.update();
-
         } break;
         default: {
           this.state = STATE.NONE;
