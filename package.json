@@ -1,5 +1,5 @@
 {
-  "name": "three-orbitcontrols",
+  "name": "three-orbitcontrols-ts",
   "version": "0.1.1",
   "description": "ThreeJS OrbitControls as a standalone and typescript compatible npm module",
   "main": "dist",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nicolaspanel/three-orbitcontrols.git"
+    "url": "git+https://github.com/nicolaspanel/three-orbitcontrols-ts.git"
   },
   "author": "",
   "license": "MIT",
@@ -24,9 +24,9 @@
     "controller"
   ],
   "bugs": {
-    "url": "https://github.com/nicolaspanel/three-orbitcontrols/issues"
+    "url": "https://github.com/nicolaspanel/three-orbitcontrols-ts/issues"
   },
-  "homepage": "https://github.com/nicolaspanel/three-orbitcontrols#readme",
+  "homepage": "https://github.com/nicolaspanel/three-orbitcontrols-ts#readme",
   "dependencies": {
     "three": "^0.83.0"
   },

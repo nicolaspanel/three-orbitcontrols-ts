@@ -2,13 +2,13 @@ ThreeJS OrbitControls as a standalone and typescript compatible npm module.
 
 # Installation
 ```shell
-npm install --save three-orbitcontrols
+npm install --save three-orbitcontrols-ts
 ```
 
 # Usage
 ```js
 import * as THREE from 'three';
-import { OrbitControls } from 'three-orbitcontrols';
+import { OrbitControls } from 'three-orbitcontrols-ts';
 
 const camera = new THREE.SomeCamera(...);
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -28,3 +28,6 @@ this.zoomSpeed = 1.0;
 
 controls.enablePan = true; // Set to false to disable panning (ie vertical and horizontal translations)
 ```
+
+# Credit
+All credit goes to [OrbitControls.js](https://github.com/mrdoob/three.js/blob/master/examples/js/controls/OrbitControls.js) contributors.
