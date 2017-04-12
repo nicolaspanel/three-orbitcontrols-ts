@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/nicolaspanel/three-orbitcontrols-ts#readme",
   "dependencies": {
-    "three": "^0.83.0"
+    "three": "^0.84.0"
   },
   "devDependencies": {
     "@types/core-js": "^0.9.35",
