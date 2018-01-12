@@ -27,7 +27,7 @@
     "url": "https://github.com/nicolaspanel/three-orbitcontrols-ts/issues"
   },
   "homepage": "https://github.com/nicolaspanel/three-orbitcontrols-ts#readme",
-  "dependencies": {
+  "peerDependencies": {
     "three": "^0.83.0"
   },
   "devDependencies": {
