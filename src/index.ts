@@ -550,7 +550,7 @@ export class OrbitControls extends THREE.EventDispatcher {
   pan( deltaX: number, deltaY: number ) {
     const element = this.domElement === document ? this.domElement.body : this.domElement;
 
-    if ( this.object instanceof THREE.PerspectiveCamera ) {
+    if (this._checkPerspectiveCamera(this.object)) {
       // perspective
       const position = this.object.position;
       this.panInternalOffset.copy( position ).sub( this.target );
@@ -562,7 +562,7 @@ export class OrbitControls extends THREE.EventDispatcher {
       // we actually don't use screenWidth, since perspective camera is fixed to screen height
       this.panLeft( 2 * deltaX * targetDistance / (element as any).clientHeight, this.object.matrix );
       this.panUp( 2 * deltaY * targetDistance / (element as any).clientHeight, this.object.matrix );
-    } else if ( this.object instanceof THREE.OrthographicCamera ) {
+    } else if (this._checkOrthographicCamera(this.object)) {
       // orthographic
       this.panLeft( deltaX * ( this.object.right - this.object.left ) / this.object.zoom / (element as any).clientWidth, this.object.matrix );
       this.panUp( deltaY * ( this.object.top - this.object.bottom ) / this.object.zoom / (element as any).clientHeight, this.object.matrix );
@@ -574,9 +574,9 @@ export class OrbitControls extends THREE.EventDispatcher {
   }
 
   dollyIn( dollyScale ) {
-    if ( this.object instanceof THREE.PerspectiveCamera ) {
+    if (this._checkPerspectiveCamera(this.object)) {
       this.scale /= dollyScale;
-    } else if ( this.object instanceof THREE.OrthographicCamera ) {
+    } else if (this._checkOrthographicCamera(this.object)) {
       this.object.zoom = Math.max( this.minZoom, Math.min( this.maxZoom, this.object.zoom * dollyScale ) );
       this.object.updateProjectionMatrix();
       this.zoomChanged = true;
@@ -587,9 +587,9 @@ export class OrbitControls extends THREE.EventDispatcher {
   }
 
   dollyOut( dollyScale ) {
-    if ( this.object instanceof THREE.PerspectiveCamera ) {
+    if (this._checkPerspectiveCamera(this.object)) {
       this.scale *= dollyScale;
-    } else if ( this.object instanceof THREE.OrthographicCamera ) {
+    } else if (this._checkOrthographicCamera(this.object)) {
       this.object.zoom = Math.max( this.minZoom, Math.min( this.maxZoom, this.object.zoom / dollyScale ) );
       this.object.updateProjectionMatrix();
       this.zoomChanged = true;
@@ -665,6 +665,23 @@ export class OrbitControls extends THREE.EventDispatcher {
   set noZoom( value: boolean ) {
     console.warn( 'THREE.OrbitControls: .noZoom has been deprecated. Use .enableZoom instead.' );
     this.enableZoom = ! value;
+  }
+
+  /**
+   * TS typeguard. Checks whether the provided camera is PerspectiveCamera. 
+   * If the check passes (returns true) the passed camera will have the type THREE.PerspectiveCamera in the if branch where the check was performed.
+   * @param camera Object to be checked.
+   */
+  private _checkPerspectiveCamera(camera: THREE.Camera): camera is THREE.PerspectiveCamera{
+    return (camera as THREE.PerspectiveCamera).isPerspectiveCamera;
+  }
+  /**
+   * TS typeguard. Checks whether the provided camera is OrthographicCamera. 
+   * If the check passes (returns true) the passed camera will have the type THREE.OrthographicCamera in the if branch where the check was performed.
+   * @param camera Object to be checked.
+   */
+  private _checkOrthographicCamera(camera: THREE.Camera): camera is THREE.OrthographicCamera{
+    return (camera as THREE.OrthographicCamera).isOrthographicCamera;
   }
 }
 
