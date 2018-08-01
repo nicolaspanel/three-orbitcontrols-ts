@@ -652,6 +652,15 @@ export class OrbitControls extends THREE.EventDispatcher {
     this.state = STATE.NONE;
   }
 
+  saveState(): void {
+    this.target0.copy(this.target);
+    this.position0.copy(this.object.position);
+    // Check whether the camera has zoom property
+    if (this._checkOrthographicCamera(this.object) || this._checkPerspectiveCamera(this.object)){
+      this.zoom0 = this.object.zoom;
+    }
+  }
+
   // backward compatibility
   get center(): THREE.Vector3 {
     console.warn('THREE.OrbitControls: .center has been renamed to .target');
