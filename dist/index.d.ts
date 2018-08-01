@@ -99,6 +99,7 @@ export declare class OrbitControls extends THREE.EventDispatcher {
     getAzimuthalAngle(): number;
     dispose(): void;
     reset(): void;
+    saveState(): void;
     readonly center: THREE.Vector3;
     noZoom: boolean;
     /**

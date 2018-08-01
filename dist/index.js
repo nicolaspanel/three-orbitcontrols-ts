@@ -520,6 +520,14 @@ var OrbitControls = (function (_super) {
         this.update();
         this.state = STATE.NONE;
     };
+    OrbitControls.prototype.saveState = function () {
+        this.target0.copy(this.target);
+        this.position0.copy(this.object.position);
+        // Check whether the camera has zoom property
+        if (this._checkOrthographicCamera(this.object) || this._checkPerspectiveCamera(this.object)) {
+            this.zoom0 = this.object.zoom;
+        }
+    };
     Object.defineProperty(OrbitControls.prototype, "center", {
         // backward compatibility
         get: function () {
