@@ -1,4 +1,3 @@
-/// <reference types="three" />
 import * as THREE from 'three';
 /**
 * @author qiao / https://github.com/qiao
@@ -100,6 +99,19 @@ export declare class OrbitControls extends THREE.EventDispatcher {
     getAzimuthalAngle(): number;
     dispose(): void;
     reset(): void;
+    saveState(): void;
     readonly center: THREE.Vector3;
     noZoom: boolean;
+    /**
+     * TS typeguard. Checks whether the provided camera is PerspectiveCamera.
+     * If the check passes (returns true) the passed camera will have the type THREE.PerspectiveCamera in the if branch where the check was performed.
+     * @param camera Object to be checked.
+     */
+    private _checkPerspectiveCamera(camera);
+    /**
+     * TS typeguard. Checks whether the provided camera is OrthographicCamera.
+     * If the check passes (returns true) the passed camera will have the type THREE.OrthographicCamera in the if branch where the check was performed.
+     * @param camera Object to be checked.
+     */
+    private _checkOrthographicCamera(camera);
 }
