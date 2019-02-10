@@ -4,7 +4,12 @@ ThreeJS OrbitControls as a standalone and typescript compatible npm module.
 ```shell
 npm install --save three-orbitcontrols-ts
 ```
-
+## Installing latest version from git
+If you require changes, that haven't yet made it to the npm repository you can add following dependency to your `package.json`:
+```
+"three-orbitcontrols-ts": "git+https://git@github.com/nicolaspanel/three-orbitcontrols-ts.git"
+```
+For more information see [npm docs](https://docs.npmjs.com/files/package.json#git-urls-as-dependencies).
 # Usage
 ```js
 import * as THREE from 'three';
