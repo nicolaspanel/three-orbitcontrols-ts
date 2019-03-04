@@ -431,7 +431,7 @@ var OrbitControls = (function (_super) {
     // deltaX and deltaY are in pixels; right and down are positive
     OrbitControls.prototype.pan = function (deltaX, deltaY) {
         var element = this.domElement === document ? this.domElement.body : this.domElement;
-        if (this._checkPerspectiveCamera(this.object)) {
+        if (this._checkPerspectiveCamera(this.object) || this.object.type == "PerspectiveCamera") {
             // perspective
             var position = this.object.position;
             this.panInternalOffset.copy(position).sub(this.target);
@@ -442,7 +442,7 @@ var OrbitControls = (function (_super) {
             this.panLeft(2 * deltaX * targetDistance / element.clientHeight, this.object.matrix);
             this.panUp(2 * deltaY * targetDistance / element.clientHeight, this.object.matrix);
         }
-        else if (this._checkOrthographicCamera(this.object)) {
+        else if (this._checkOrthographicCamera(this.object) || this.object.type == "OrthographicCamera") {
             // orthographic
             this.panLeft(deltaX * (this.object.right - this.object.left) / this.object.zoom / element.clientWidth, this.object.matrix);
             this.panUp(deltaY * (this.object.top - this.object.bottom) / this.object.zoom / element.clientHeight, this.object.matrix);
@@ -454,10 +454,10 @@ var OrbitControls = (function (_super) {
         }
     };
     OrbitControls.prototype.dollyIn = function (dollyScale) {
-        if (this._checkPerspectiveCamera(this.object)) {
+        if (this._checkPerspectiveCamera(this.object) || this.object.type == "PerspectiveCamera") {
             this.scale /= dollyScale;
         }
-        else if (this._checkOrthographicCamera(this.object)) {
+        else if (this._checkOrthographicCamera(this.object) || this.object.type == "OrthographicCamera") {
             this.object.zoom = Math.max(this.minZoom, Math.min(this.maxZoom, this.object.zoom * dollyScale));
             this.object.updateProjectionMatrix();
             this.zoomChanged = true;
