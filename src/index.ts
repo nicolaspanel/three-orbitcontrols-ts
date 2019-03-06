@@ -682,7 +682,7 @@ export class OrbitControls extends THREE.EventDispatcher {
    * @param camera Object to be checked.
    */
   private _checkPerspectiveCamera(camera: THREE.Camera): camera is THREE.PerspectiveCamera{
-    return (camera as THREE.PerspectiveCamera).isPerspectiveCamera;
+    return (camera as THREE.PerspectiveCamera).isPerspectiveCamera || camera.type == "PerspectiveCamera";
   }
   /**
    * TS typeguard. Checks whether the provided camera is OrthographicCamera. 
@@ -690,7 +690,7 @@ export class OrbitControls extends THREE.EventDispatcher {
    * @param camera Object to be checked.
    */
   private _checkOrthographicCamera(camera: THREE.Camera): camera is THREE.OrthographicCamera{
-    return (camera as THREE.OrthographicCamera).isOrthographicCamera;
+    return (camera as THREE.OrthographicCamera).isOrthographicCamera || camera.type == "OrthographicCamera";
   }
 }
 
