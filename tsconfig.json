@@ -3,9 +3,7 @@
     "target": "es5",
     "declaration": true,
     "outDir": "dist",
-    "typeRoots": [
-      	"./node_modules/@types"
-    ],
+    "noImplicitAny": true,
 	"lib": [
 		"es2016",
 		"dom"

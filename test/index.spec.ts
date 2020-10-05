@@ -1,22 +1,19 @@
-import * as mocha from 'mocha';
+import 'mocha';
 import * as THREE from 'three';
 import {OrbitControls} from '../src';
 import {expect} from 'chai';
-import * as jsdom from 'jsdom';
+import { JSDOM } from 'jsdom';
 
 describe('orbit controls', () => {
   let controls: OrbitControls;
   let container: HTMLElement;
   let window: Window;
-  beforeEach((done) => {
+  beforeEach(() => {
     const camera = new THREE.PerspectiveCamera(50, 2, 1, 1000);
-    const document = jsdom.env('<html><body><div id="container"></div></body></html>', (err, _window_) => {
-      if (err) return done(err);
-      window = _window_;
-      container = window.document.getElementById( 'container' );
-      controls = new OrbitControls(camera, container, window);
-      done();
-    });
+    const document = new JSDOM('<html><body><div id="container"></div></body></html>');
+    window = document.window as any; // Need to use `as any` since DOMWindow can't be converted to Window.
+    container = window.document.getElementById('container');
+    controls = new OrbitControls(camera, container, window);
   });
   afterEach(() => {
     window.close();

@@ -1,8 +1,11 @@
 "use strict";
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -10,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.OrbitControls = void 0;
 var THREE = require("three");
 var STATE = {
     NONE: -1,
@@ -38,7 +42,7 @@ var EPS = 0.000001;
 *    Zoom - middle mouse, or mousewheel / touch: two finger spread or squish
 *    Pan - right mouse, or arrow keys / touch: three finger swipe
 */
-var OrbitControls = (function (_super) {
+var OrbitControls = /** @class */ (function (_super) {
     __extends(OrbitControls, _super);
     function OrbitControls(object, domElement, domWindow) {
         var _this = _super.call(this) || this;
@@ -534,7 +538,7 @@ var OrbitControls = (function (_super) {
             console.warn('THREE.OrbitControls: .center has been renamed to .target');
             return this.target;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(OrbitControls.prototype, "noZoom", {
@@ -546,7 +550,7 @@ var OrbitControls = (function (_super) {
             console.warn('THREE.OrbitControls: .noZoom has been deprecated. Use .enableZoom instead.');
             this.enableZoom = !value;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     /**

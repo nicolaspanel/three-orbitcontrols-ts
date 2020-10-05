@@ -534,13 +534,13 @@ export class OrbitControls extends THREE.EventDispatcher {
     return false;
   }
 
-  panLeft( distance: number, objectMatrix ) {
+  panLeft( distance: number, objectMatrix: THREE.Matrix4 ) {
     this.panLeftV.setFromMatrixColumn( objectMatrix, 0 ); // get X column of objectMatrix
     this.panLeftV.multiplyScalar( - distance );
     this.panOffset.add( this.panLeftV );
   }
 
-  panUp( distance: number, objectMatrix ) {
+  panUp( distance: number, objectMatrix: THREE.Matrix4 ) {
     this.panUpV.setFromMatrixColumn( objectMatrix, 1 ); // get Y column of objectMatrix
     this.panUpV.multiplyScalar( distance );
     this.panOffset.add( this.panUpV );
@@ -573,7 +573,7 @@ export class OrbitControls extends THREE.EventDispatcher {
     }
   }
 
-  dollyIn( dollyScale ) {
+  dollyIn( dollyScale: number ) {
     if (this._checkPerspectiveCamera(this.object)) {
       this.scale /= dollyScale;
     } else if (this._checkOrthographicCamera(this.object)) {
@@ -586,7 +586,7 @@ export class OrbitControls extends THREE.EventDispatcher {
     }
   }
 
-  dollyOut( dollyScale ) {
+  dollyOut( dollyScale: number ) {
     if (this._checkPerspectiveCamera(this.object)) {
       this.scale *= dollyScale;
     } else if (this._checkOrthographicCamera(this.object)) {
